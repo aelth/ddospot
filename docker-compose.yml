@@ -1,0 +1,41 @@
+version: '3.5'
+services:
+    ddospot:
+        build:
+            context: ./ddospot
+        image: aelth/simpledns
+        volumes:
+            - ./ddospot/bl:/ddospot/bl
+            - ./ddospot/db:/ddospot/db
+            - ./ddospot/logs:/ddospot/logs
+        ports:
+            - target: 19
+              published: 19 
+              protocol: udp
+              mode: host
+            - target: 53
+              published: 54
+              protocol: udp
+              mode: host
+            - target: 123
+              published: 123
+              protocol: udp
+              mode: host
+            - target: 161
+              published: 161
+              protocol: udp
+              mode: host
+            - target: 1900
+              published: 1901
+              protocol: udp
+              mode: host
+        networks:
+            ddospot:
+                ipv4_address: 172.18.0.2
+networks:
+    ddospot:
+        name: 'ddospot-net'
+        driver: "bridge"
+        ipam:
+            config:
+                - subnet: 172.18.0.1/24

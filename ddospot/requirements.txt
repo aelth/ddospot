@@ -1,0 +1,8 @@
+colorama
+git+https://github.com/hpfeeds/hpfeeds
+schedule
+SQLAlchemy
+tabulate
+Twisted
+python-geoip
+python-geoip-geolite2
